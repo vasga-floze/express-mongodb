@@ -2,6 +2,14 @@ const express = require('express')
 const app = express()
 const port = 8080;
 
+//database connection
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/dbStudents',{useNewUrlParser:true, useUnifiedTopology:true})
+  .then(()=> console.log('Database successfully connected'))
+  .catch(e=> console.log('Connection error', e))
+
+
 //view engine
 app.set('view engine', 'ejs');
 app.set('views',__dirname + '/views');
