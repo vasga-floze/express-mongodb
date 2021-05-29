@@ -12,8 +12,9 @@ app.use(express.static(__dirname + '/public')); //Static file service in Express
 
 //we call our routes
 app.use('/', require('./router/Rutas'));
+app.use('/students', require('./router/Students')); //call to students view
 
-//if doesn't find a page it gonna show th errorPage
+//if doesn't find a page it gonna show the errorPage
 app.use('/', (req, res, next) => {
   res.status(404).render("errorPage")
 });

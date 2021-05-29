@@ -1,0 +1,37 @@
+<%- include("template/cabecera", {titlePage: 'Students'}) %>
+
+<h1 class="text-center">Listado Estudiantes</h1>
+
+<!-- Show the static array in a table-->
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Cod</th>
+            <th scope="col">Course</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            <!-- with EJS iterate static array using foreach  -->
+            <!-- first check if array it is not empty -->
+            <% if (studentsArray.length > 0) { %> 
+                <!-- iterate -->
+                <% studentsArray.forEach(student => { %>
+                    <tr>
+                        <th scope="row"><%= student.id %></th>
+                        <td><%= student.name %></td>
+                        <td><%= student.cod %></td>
+                        <td><%= student.course %></td>
+                        <td>Actions</td>
+                    </tr>
+                <% }) %>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<!-- This add the footer view-->
+<%- include("template/footer") %>
