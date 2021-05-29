@@ -26,7 +26,9 @@
                         <td><%= student.name %></td>
                         <td><%= student.cod %></td>
                         <td><%= student.course %></td>
-                        <td>Actions</td>
+                        <td>
+                            <a href="students/<%= student.id %>" class="btn btn-warning btn-sm">Editar</a>
+                        </td>
                     </tr>
                 <% }) %>
             <% } %>

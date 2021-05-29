@@ -40,4 +40,28 @@ router.post('/', async(req, res)=>{
     }
 })
 
+//id is a dinamic variable
+router.get('/:id', async(req, res)=>{
+    //this variable id it going to read from req
+    const id = req.params.id;
+
+    try {
+        const studentDB = await Student.findOne({ _id: id });
+        console.log(studentDB)
+
+        //painting the result in a view
+        res.render('detail', {
+            student: studentDB,
+            error: false //allows to verify the existence of the id
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.render('detail', {
+            error: true,
+            message: 'No se encuentra el id seleccionado'
+        })
+    }
+});
+
 module.exports = router;

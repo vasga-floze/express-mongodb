@@ -1,0 +1,37 @@
+<%- include("template/cabecera", {titlePage: 'Detalle Estudiante'}) %>
+
+    <div class="container">
+        <h1 class="text-center">Datos del estudiante</h1>
+        <!--if it shows an error it is because the id does not exist-->
+        <% if (error) { %>
+            <p>
+                <%= message %> 
+            </p>
+            <a href="/students" class="btn btn-primary btn-block">Volver</a>
+        <% } %>
+        <!--if the error is false, the id exists and will display the result-->
+        <% if (!error) { %>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Cod</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><%= student.id %></th>
+                        <td><%= student.name %></td>
+                        <td><%= student.cod %></td>
+                        <td><%= student.course %></td>
+                        <td>Actions</td>
+                    </tr>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+
+<%- include("template/footer") %>
