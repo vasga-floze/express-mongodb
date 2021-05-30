@@ -27,7 +27,12 @@
                         <td><%= student.name %></td>
                         <td><%= student.cod %></td>
                         <td><%= student.course %></td>
-                        <td>Actions</td>
+                        <td>
+                            <!--With the id, it is going to send the action-->
+                            <button class="btn btn-danger btn-sm" id="btnDelete" data-id="<%= student.id %>"> <!--data-id stores the id-->
+                                Eliminar
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -35,3 +40,29 @@
     </div>
 
 <%- include("template/footer") %>
+
+<!--similar to what vue does, I will pass javascript and I'll use fetch-->
+<script>
+    const btnDelete = document.querySelector('#btnDelete') //the id is being received from the button
+    
+    //when button is pressed it is going to be catch an event
+    btnDelete.addEventListener('click', async()=>{
+        //console.log( 'Click en el button eliminar');
+        const id = btnDelete.dataset.id //this capture the id form data-id in the button
+        try {
+            const data = await fetch(`/students/${id}` , {
+                method: 'delete'
+            })
+            const res = await data.json()
+
+            if (res.status) {
+                window.location.href = '/students'
+                //res.redirect('/students'); //for this line: on asynchronous requests it only changes on the backend side to the URL, but not in the frotend
+            } else {
+                console.log(res)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    })
+</script>

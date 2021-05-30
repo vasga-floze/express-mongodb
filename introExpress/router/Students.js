@@ -22,6 +22,8 @@ router.get('/create', (req, res)=>{
     res.render('create')
 });
 
+
+//Create a document
 router.post('/', async(req, res)=>{
     const body = req.body
     try {
@@ -38,8 +40,10 @@ router.post('/', async(req, res)=>{
     } catch (error) {
         console.log(error)
     }
-})
+});
 
+
+//Read a single document
 //id is a dinamic variable
 router.get('/:id', async(req, res)=>{
     //this variable id it going to read from req
@@ -61,6 +65,30 @@ router.get('/:id', async(req, res)=>{
             error: true,
             message: 'No se encuentra el id seleccionado'
         })
+    }
+});
+
+
+//delete a document
+router.delete('/:id', async(req, res)=> {
+    const id = req.params.id
+
+    try {
+        const studentDB = await Student.findByIdAndDelete({ _id: id})
+
+        if (studentDB) {
+            res.json({
+                status : true,
+                message : 'Eliminado!'
+            });
+        } else {
+            res.json({
+                status : false,
+                message : 'No ha sido posible eliminar'
+            });
+        }
+    } catch (error) {
+        console.log(error)
     }
 });
 
