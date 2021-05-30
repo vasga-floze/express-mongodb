@@ -1,7 +1,7 @@
 <%- include("template/cabecera", {titlePage: 'Detalle Estudiante'}) %>
 
-    <div class="container">
-        <h1 class="text-center">Datos del estudiante</h1>
+    <div class="container text-center">
+        <h1 class="text-center my-3">Datos del estudiante</h1>
         <!--if it shows an error it is because the id does not exist-->
         <% if (error) { %>
             <p>
@@ -11,17 +11,27 @@
         <% } %>
         <!--if the error is false, the id exists and will display the result-->
         <% if (!error) { %>
-
-            <form id="editForm" data-id="<%= student.id %>">
-                <input type="text" name="name" value="<%= student.name %>" id="nameId" class="form-control my-2">
-                <input type="text" name="cod" value="<%= student.cod %>" id="codId" class="form-control my-2">
-                <input type="text" name="course" value="<%= student.course %>" id="courseId" class="form-control my-2">
-                <button class="btn btn-warning" type="submit">Editar</button>
-            </form>
-            <!--With the id, it is going to send the action-->
-            <button class="btn btn-danger btn-sm mt-5" id="btnDelete" data-id="<%= student.id %>"> <!--data-id stores the id-->
-                Eliminar
-            </button>
+            <div class="row justify-content-center">
+                <div class="col-sm-6 text-center">
+                    <div class="card text-white bg-dark" >
+                        <div class="card-body">
+                            <form id="editForm" data-id="<%= student.id %>">
+                                <input type="text" name="name" value="<%= student.name %>" id="nameId" class="form-control my-2">
+                                <input type="text" name="cod" value="<%= student.cod %>" id="codId" class="form-control my-2">
+                                <input type="text" name="course" value="<%= student.course %>" id="courseId" class="form-control my-2">
+                                <div class="row justify-content-center mt-3">
+                                    <button class="btn btn-success mr-2" type="submit">Actualizar</button>
+                                    <!--With the id, it is going to send the action-->
+                                    <button class="btn btn-danger" id="btnDelete" data-id="<%= student.id %>"> <!--data-id stores the id-->
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="/students" class="btn btn-link my-3">Volver</a>
         <% } %>
     </div>
 

@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/about', (req, res)=> {
-    res.render("about", {tituloAbout: "Este es un mensaje dinamico de about"}) //this variable tituloAbout it will be send to about.ejs
+    res.render("about", {tituloAbout: "Presenta"}) //this variable tituloAbout it will be send to about.ejs
 });
 
 module.exports = router;

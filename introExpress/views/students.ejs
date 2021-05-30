@@ -4,15 +4,15 @@
 
 <!-- Show the static array in a table-->
 <div class="container">
-    <a class="btn btn-success" href="/students/create">Crear nuevo</a>
-    <table class="table">
+    <a class="btn btn-success mb-3" href="/students/create">Crear nuevo</a>
+    <table class="table table-hover table-dark">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Cod</th>
-            <th scope="col">Course</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Código</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                         <td><%= student.cod %></td>
                         <td><%= student.course %></td>
                         <td>
-                            <a href="students/<%= student.id %>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="students/<%= student.id %>" class="btn btn-warning">Editar</a>
                         </td>
                     </tr>
                 <% }) %>

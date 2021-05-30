@@ -1,13 +1,28 @@
 <%- include("template/cabecera", {titlePage: 'Crear Nuevo'}) %>
 
-    <div class="container">
-        <h1 class="text-center">Crear nuevo estudiante</h1>
-        <form action="/students" method="POST">
-            <input type="text" name="name" placeholder="Escriba el nombre del estudiante" class="form-control my-2">
-            <input type="text" name="cod" placeholder="Escriba el código" class="form-control my-2">
-            <input type="text" name="course" placeholder="Escriba el nombre del curso" class="form-control my-2">
-            <button class="btn btn-success" type="submit">Agregar</button>
-        </form>
-    </div>
+<div class="container text-center">
+    <h1 class="text-center my-3">Registrar Estudiante</h1>
 
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center">
+            <div class="card text-white bg-dark" >
+                <div class="card-body">
+                    <div class="container">
+                        <form action="/students" method="POST">
+                            <label for="Nombre">Nombre</label>
+                            <input type="text" name="name" placeholder="Escriba el nombre del estudiante" class="form-control my-2" required>
+                            <label for="Nombre">Nombre</label>
+                            <input type="text" name="cod" placeholder="Escriba el código" class="form-control my-2" required>
+                            <label for="código">Código</label>
+                            <input type="text" name="course" placeholder="Escriba el nombre del curso" class="form-control my-2" required>
+                            <button class="btn btn-success mt-3" type="submit">Agregar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <a href="/students" class="btn btn-link my-3">Volver</a>
+</div>
 <%- include("template/footer") %>
