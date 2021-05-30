@@ -92,4 +92,28 @@ router.delete('/:id', async(req, res)=> {
     }
 });
 
+//edit a document (PUT)
+router.put('/:id', async(req, res) =>{
+    const id = req.params.id;
+    const body = req.body;
+
+    try {
+        const studentDB = await Student.findByIdAndUpdate(id, body, {useFindAndModify: false});
+        console.log(studentDB)
+
+        res.json({
+            status : true,
+            message : 'El documento ha sido editado satisfactoriamente!'
+        });
+
+    } catch (error) {
+        console.log(error)
+        res.json({
+            status : false,
+            message : 'El documento no se ha podido editar!'
+        });
+    }
+})
+
+
 module.exports = router;
