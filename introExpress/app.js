@@ -1,11 +1,28 @@
 const express = require('express')
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const methods = require('./methods')
+
 const app = express()
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+
+//CookieParser for HTTP request
+app.use(cookieParser())
+
+//we inject the user request by reading the authToken from the cookies
+app.use((req, res, next)=>{
+  //get auth token from cookies
+  const authTokens=req.cookies['AuthToken']
+
+  //inject the user to the request
+  req.user = methods.authTokens[authTokens];
+
+  next();
+});
 
 const port = 8080;
 

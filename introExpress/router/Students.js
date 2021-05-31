@@ -6,13 +6,21 @@ const Student = require('../models/student')
 
 router.get('/', async (req, res) =>{
     try {
-        const studentsArrayDB = await Student.find();
-        console.log(studentsArrayDB)
-
-        //render students view
-        res.render("students",{ 
-            studentsArray: studentsArrayDB
-        })
+        if (req.user){
+            const studentsArrayDB = await Student.find();
+            console.log(studentsArrayDB)
+            res.render('students',{
+                studentsArray: studentsArrayDB,
+                userName: req.user.fullName
+            })
+            console.log(req.user)
+        }else{
+            res.render('login',{
+                message: "Por favor inicie sesion",
+                messageClass: 'alert-danger'
+            })
+        }
+        
     } catch (error) {
         console.log(error)
     }

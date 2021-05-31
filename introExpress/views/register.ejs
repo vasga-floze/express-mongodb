@@ -1,0 +1,32 @@
+<%- include("template/cabecera", {titlePage: 'Register'}) %>
+<%- include("template/navbar") %>
+<div class="row justify-content-md-center" style="margin-top: 30px;">
+    <h1>Crear Cuenta</h1>
+    <div class="col-md-4">     
+
+        <form method="POST" action="/register">
+            <div class="form-group">
+                <label for="fullName">Nombre Completo</label>
+                <input name="fullname" type="text" class="form-control" id="fullname" placeholder="Enter Full Name" required>
+            </div>
+                <div class="form-group">
+                <label for="email">Correo Electronico</label>
+                <input name="email" type="email" class="form-control" id="email" placeholder="Enter Full email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirmar Contraseña</label>
+                <input name="confirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Re-enter your password" required>
+            </div>
+            <a href="/" class="btn btn-secondary">Back</a>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+
+    </div>
+</div>
+
+
+<%- include("template/footer") %>
